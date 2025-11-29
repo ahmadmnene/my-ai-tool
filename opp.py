@@ -137,7 +137,7 @@ if api_key:
     genai.configure(api_key=api_key)
     
     if "model" not in st.session_state:
-        st.session_state.model = genai.GenerativeModel('gemini-1.5-flash', system_instruction=SYSTEM_PROMPT)
+      st.session_state.model = genai.GenerativeModel('gemini-pro', system_instruction=SYSTEM_PROMPT)
     
     if "chat" not in st.session_state:
         st.session_state.chat = st.session_state.model.start_chat(history=[])
@@ -161,4 +161,5 @@ if api_key:
                     response = st.session_state.chat.send_message(prompt)
                     st.markdown(response.text)
                 except Exception as e:
+
                     st.error(f"خطأ في الاتصال: {e}")
